@@ -48,6 +48,8 @@ public class CorsoDAO {
 		}
 	}
 
+	
+	
 	/*
 	 * Dato un codice insegnamento, ottengo il corso
 	 */
@@ -58,10 +60,9 @@ public class CorsoDAO {
 	/*
 	 * Ottengo tutti gli studenti iscritti al Corso
 	 */
-	public void getStudentiIscrittiAlCorso(Corso corso) {
+	public List<Studente> getStudentiIscrittiAlCorso(Corso corso) {
 
-		final String sql = "SELECT * FROM studenti, iscrizione "
-				+ "WHERE corso = ? && corso.codins == iscrizione.codins && studente.matricola==iscrizione.matricola";
+		final String sql = "SELECT * FROM studente s, iscrizione i, corso c WHERE c.codins = i.codins && i.matricola = s.matricola && c.codins =?";
 
 		List<Studente> studenti = new LinkedList<Studente>();
 
@@ -81,6 +82,7 @@ public class CorsoDAO {
 				studenti.add(stemp);
 				System.out.println(matricola + " " + cognome + " " + nome + " " + cds);}
 			
+			return studenti;
 		
 				
 		}catch(SQLException e) {
