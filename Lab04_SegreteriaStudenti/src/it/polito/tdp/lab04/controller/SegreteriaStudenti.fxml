@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -25,7 +26,16 @@
                   <ComboBox fx:id="comboCorsi" onAction="#chooseCourse" prefWidth="150.0" />
                </children>
             </HBox>
-            <Button fx:id="btnCerca" mnemonicParsing="false" onAction="#doCerca" text="Cerca Iscritti" />
+            <Button fx:id="btnCerca" mnemonicParsing="false" onAction="#doCerca" text="Cerca Iscritti">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnVerificaIscrizione" mnemonicParsing="false" onAction="#doVerifica" text="Check">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Button>
             <HBox>
                <children>
                   <Label prefHeight="17.0" prefWidth="60.0" text="Studente" />
@@ -42,19 +52,30 @@
                   </TextField>
                   <TextField fx:id="txtCognome" editable="false" />
                </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
             </HBox>
             <HBox prefHeight="38.0" prefWidth="598.0">
                <children>
-                  <Button fx:id="btnCercaCorso" mnemonicParsing="false" onAction="#doRicerca" text="Cerca corsi" />
+                  <Button fx:id="btnCercaCorso" mnemonicParsing="false" onAction="#doRicerca" text="Cerca corsi">
+                     <HBox.margin>
+                        <Insets top="15.0" />
+                     </HBox.margin>
+                  </Button>
                   <Button fx:id="btnIscrivi" mnemonicParsing="false" onAction="#doIscrivi" text="Iscrivi">
                      <HBox.margin>
-                        <Insets left="400.0" />
+                        <Insets left="400.0" top="15.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
-            <TextField fx:id="txtResult" editable="false" prefHeight="77.0" prefWidth="608.0" />
-            <Button fx:id="btnClear" mnemonicParsing="false" onAction="#doReset" text="Reset" />
+            <TextArea fx:id="txtResult" prefHeight="200.0" prefWidth="200.0" />
+            <Button fx:id="btnClear" mnemonicParsing="false" onAction="#doReset" text="Reset">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </center>

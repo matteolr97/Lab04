@@ -37,9 +37,9 @@ public class CorsoDAO {
 				Corso c = new Corso(codins, numeroCrediti, nome, periodoDidattico);
 				corsi.add(c);
 				System.out.println(codins + " " + numeroCrediti + " " + nome + " " + periodoDidattico);
-
 			}
-
+			rs.close();
+			conn.close();
 			return corsi;
 
 		} catch (SQLException e) {
@@ -69,6 +69,8 @@ public class CorsoDAO {
 		try {
 			Connection conn = ConnectDB.getConnection();
 			PreparedStatement st = conn.prepareStatement(sql);
+			String codice = corso.getCodins();
+			st.setString(1, codice);
 
 			ResultSet rs = st.executeQuery();
 
@@ -78,18 +80,20 @@ public class CorsoDAO {
 				String cognome = rs.getString("cognome");
 				String nome = rs.getString("nome");
 				String cds = rs.getString("CDS");
+				
 				Studente stemp = new Studente(matricola, cognome,nome,cds);
 				studenti.add(stemp);
-				System.out.println(matricola + " " + cognome + " " + nome + " " + cds);}
-			
-			return studenti;
-		
 				
+				System.out.println(matricola + " " + cognome + " " + nome + " " + cds);}
+			rs.close();
+			conn.close();
+		
+		return studenti;	
+		
+		
 		}catch(SQLException e) {
 			throw new RuntimeException("Errore Db");
 		}
-		
-
 		
 		// TODO
 	}
